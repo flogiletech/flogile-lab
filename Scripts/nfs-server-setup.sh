@@ -1,5 +1,5 @@
 #!/bin/sh
-if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+if [ $(/usr/bin/id -u) -ne 0 ]; then
     echo "Not running as root"
 	echo "Please run as a root user"
     exit

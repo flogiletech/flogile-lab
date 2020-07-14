@@ -1,5 +1,5 @@
 #!/bin/sh
-if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+if [ $(/usr/bin/id -u) -ne 0 ]; then
     echo "Not running as root"
 	echo "Please run as a root user"
     exit
@@ -15,8 +15,8 @@ lockfile4=/var/lib/dpkg/lock
 #master servers IP
 #ip4=$(/sbin/ip -o -4 addr list enp0s3 | awk '{print $4}' | cut -d/ -f1)
 vip=192.168.0.201
-sha256="d5f7749ac41605535e6a95953c4476eb80dcd69f351a4c864591a486d42dc5a0"
-token="6p1cku.7xuoojfxn544qjbx"
+sha256=""
+token=""
 km1ip=192.168.0.131
 km2ip=192.168.0.132
 km3ip=192.168.0.133

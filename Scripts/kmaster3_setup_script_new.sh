@@ -1,5 +1,5 @@
 #!/bin/sh
-if [[ $(/usr/bin/id -u) -ne 0 ]]; then
+if [ $(/usr/bin/id -u) -ne 0 ]; then
     echo "Not running as root"
 	echo "Please run as a root user"
     exit
@@ -17,9 +17,9 @@ lockfile4=/var/lib/dpkg/lock
 
 vip=192.168.0.201
 enp=enp0s3
-sha256="d5f7749ac41605535e6a95953c4476eb80dcd69f351a4c864591a486d42dc5a0"
-certkey="a44ce5b257bd59b1f72223051e7475d32003b2b431e5c4129f7ab113e64fdedf"
-token="6p1cku.7xuoojfxn544qjbx"
+sha256=""
+certkey=""
+token=""
 km1ip=192.168.0.131
 km2ip=192.168.0.132
 km3ip=192.168.0.133
@@ -37,7 +37,7 @@ $km3ip $km3name
 $kn1ip $kn1name
 EOF
 apt-get update -y
-hostnamectl set-hostname $km2name
+hostnamectl set-hostname $km3name
 ufw disable
 swapoff -a
 sed -i '/swap/d' /etc/fstab
