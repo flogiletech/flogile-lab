@@ -5,9 +5,13 @@ if [[ $(/usr/bin/id -u) -ne 0 ]]; then
     exit
 fi
 lockfile1=/var/cache/apt/archives/lock
-lockfile2=/var/lib/dpkg/lock-frontend
+lockfile2=/var/cache/apt/archives/lock-frontend
+lockfile3=/var/lib/dpkg/lock-frontend
+lockfile4=/var/lib/dpkg/lock
 [ -f $lockfile1 ] && rm -rf $lockfile1
 [ -f $lockfile2 ] && rm -rf $lockfile2
+[ -f $lockfile3 ] && rm -rf $lockfile3
+[ -f $lockfile4 ] && rm -rf $lockfile4
 #master servers IP
 #ip4=$(/sbin/ip -o -4 addr list enp0s3 | awk '{print $4}' | cut -d/ -f1)
 km1ip=192.168.0.131
