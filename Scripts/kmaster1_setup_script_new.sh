@@ -1,3 +1,4 @@
+#!/bin/sh
 #master servers IP
 #ip4=$(/sbin/ip -o -4 addr list enp0s3 | awk '{print $4}' | cut -d/ -f1)
 km1ip=192.168.0.131
