@@ -34,25 +34,25 @@ $kn1ip $kn1name
 EOF
 apt-get update -y
 hostnamectl set-hostname $km1name
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "failed to set hostname!!!"
     exit 1
 fi
 echo "Setting hostname.."
 ufw disable
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to Disabled ufw!!"
     exit 1
 fi
 echo "Disabled ufw..."
 swapoff -a
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to swapoff!!"
     exit 1
 fi
 echo "swapoff is done...."
 sed -i '/swap/d' /etc/fstab
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to remove swap entry!!"
     exit 1
 fi
@@ -63,68 +63,68 @@ net.bridge.bridge-nf-call-iptables = 1
 net.ipv4.ip_forward       = 1
 EOF
 sysctl --system
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to update kube config!!"
     exit 1
 fi
 echo "updated kube config......"
 apt-get install docker.io -y 
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to installed docker!!"
     exit 1
 fi
 echo "Successfuly installed docker......"
 systemctl enable docker
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to Enable docker!!"
     exit 1
 fi
 echo "Successfuly enabled docker......."
 systemctl start docker
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to started docker!!"
     exit 1
 fi
 echo "Successfuly started docker........"
 apt-get install curl -y
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to installed curl!!"
     exit 1
 fi
 echo "Successfuly installed curl........."
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to add apt-key!!"
     exit 1
 fi
 echo "Successfuly add apt-key.........."
 apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to add kube repo!!"
     exit 1
 fi
 echo "Successfuly add kube repo..........."
 apt install -y kubeadm=1.18.5-00 kubelet=1.18.5-00 kubectl=1.18.5-00
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to install kubeadm kubelet kubectl!!"
     exit 1
 fi
 echo "Successfuly installed kubeadm kubelet kubectl............"
 apt-mark hold kubeadm kubelet kubectl
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to hold kubeadm kubelet kubectl!!"
     exit 1
 fi
 echo "Successfuly hold kubeadm kubelet kubectl............"
 # Install Kubernetes master 01
 docker run --network host --rm plndr/kube-vip:0.1.5 kubeadm init --interface $enp --vip $vip --startAsLeader=true | tee /etc/kubernetes/manifests/vip.yaml
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to setup VIP interface!!"
     exit 1
 fi
 echo "Successfuly created VIP interface.............."
 kubeadm init --kubernetes-version 1.18.5 --control-plane-endpoint $vip --upload-certs
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to setup Kubernetes cluster!!"
     exit 1
 fi
@@ -133,7 +133,7 @@ mkdir -p $HOME/.kube
 cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 chown $(id -u):$(id -g) $HOME/.kube/config
 kubectl create -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
-if [[ "$?" -ne 0 ]]; then 
+if [ "$?" -ne 0 ]; then 
 echo "Failed to setup calico pod!!"
     exit 1
 fi
