@@ -114,14 +114,12 @@ echo "Failed to hold kubeadm kubelet kubectl!!"
 fi
 echo "Successfuly installed kubeadm kubelet kubectl............"
 
-exec 1>>log.out 2>&1
 #Install Kubernetes node 01
 kubeadm join $vip:6443 --token $token --discovery-token-ca-cert-hash sha256:$sha256
 if [ "$?" -ne 0 ]; then
 echo "Failed to add Kubernetes worker node!!"
     exit 1
 fi
-exec > /dev/tty 2>&1
 echo "Successfuly completed Kubernetes $apphostname cluster setup................"
 echo
 echo "##############################################################################################"
