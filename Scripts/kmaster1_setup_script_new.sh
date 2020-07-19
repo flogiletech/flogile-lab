@@ -22,7 +22,7 @@ kn7ip=10.10.73.81
 kn8ip=10.10.73.82
 nfs1ip=10.10.73.85
 vip=10.10.73.68
-enp=enp0s3
+enp=ens32
 echo
 echo "* * * *  *          * * *      * * *    *  *        * * * *"
 echo "*        *        *       *  *       *  *  *        *      "
@@ -48,18 +48,18 @@ lockfile4=/var/lib/dpkg/lock
 [ -f $lockfile3 ] && rm -rf $lockfile3
 [ -f $lockfile4 ] && rm -rf $lockfile4
 #Master server hostname
-km1name=kmaster1
-km2name=kmaster2
-km3name=kmaster3
-kn1name=knode1
-kn2name=knode2
-kn3name=knode3
-kn4name=knode4
-kn5name=knode5
-kn6name=knode6
-kn7name=knode7
-kn8name=knode8
-nfs1name=nfs1
+km1name=crvs-master1
+km2name=crvs-master2
+km3name=crvs-master3
+kn1name=crvs-node1
+kn2name=crvs-node2
+kn3name=crvs-node3
+kn4name=crvs-node4
+kn5name=crvs-node5
+kn6name=crvs-node6
+kn7name=crvs-node7
+kn8name=crvs-node8
+nfsname=crvs-nfs
 echo "Setting up Host entry..."
 cat >>/etc/hosts<<EOF
 $km1ip $km1name
@@ -73,7 +73,7 @@ $kn5ip $kn5name
 $kn6ip $kn6name
 $kn7ip $kn7name
 $kn8ip $kn8name
-$nfs1ip $nfs1name
+$nfsip $nfsname
 EOF
 apt-get update -y
 hostnamectl set-hostname $km1name
