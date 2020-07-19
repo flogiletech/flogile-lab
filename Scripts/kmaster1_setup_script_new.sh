@@ -9,11 +9,19 @@
 # ###################################################################### #
 #Set servers IP
 #ip4=$(/sbin/ip -o -4 addr list enp0s3 | awk '{print $4}' | cut -d/ -f1)
-km1ip=192.168.0.131
-km2ip=192.168.0.132
-km3ip=192.168.0.133
-kn1ip=192.168.0.134
-vip=192.168.0.201
+km1ip=10.10.73.72
+km2ip=10.10.73.73
+km3ip=10.10.73.78
+kn1ip=10.10.73.86
+kn2ip=10.10.73.87
+kn3ip=10.10.73.88
+kn4ip=10.10.73.89
+kn5ip=10.10.73.90
+kn6ip=10.10.73.80
+kn7ip=10.10.73.81
+kn8ip=10.10.73.82
+nfs1ip=10.10.73.85
+vip=10.10.73.68
 enp=enp0s3
 echo
 echo "* * * *  *          * * *      * * *    *  *        * * * *"
@@ -24,6 +32,7 @@ echo "*        *        *       *  *   * * *  *  *        *      "
 echo "*        *        *       *  *       *  *  *        *      "
 echo "*        * * * *    * * *      * * *    *  * * * *  * * * *"      
 echo
+echo "Kubernetes Cluster installation is in Progross...."
 exec 1>log.out 2>&1
 if [ $(/usr/bin/id -u) -ne 0 ]; then
     echo "Not running as root"
@@ -43,12 +52,28 @@ km1name=kmaster1
 km2name=kmaster2
 km3name=kmaster3
 kn1name=knode1
+kn2name=knode2
+kn3name=knode3
+kn4name=knode4
+kn5name=knode5
+kn6name=knode6
+kn7name=knode7
+kn8name=knode8
+nfs1name=nfs1
 echo "Setting up Host entry..."
 cat >>/etc/hosts<<EOF
 $km1ip $km1name
 $km2ip $km2name
 $km3ip $km3name
 $kn1ip $kn1name
+$kn2ip $kn2name
+$kn3ip $kn3name
+$kn4ip $kn4name
+$kn5ip $kn5name
+$kn6ip $kn6name
+$kn7ip $kn7name
+$kn8ip $kn8name
+$nfs1ip $nfs1name
 EOF
 apt-get update -y
 hostnamectl set-hostname $km1name
