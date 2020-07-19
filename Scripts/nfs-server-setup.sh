@@ -12,7 +12,7 @@ lockfile4=/var/lib/dpkg/lock
 [ -f $lockfile2 ] && rm -rf $lockfile2
 [ -f $lockfile3 ] && rm -rf $lockfile3
 [ -f $lockfile4 ] && rm -rf $lockfile4
-apt-get install nfs-kernel-server
+apt-get -y install nfs-kernel-server
 mkdir -p /var/nfsshare
 chown nobody:nogroup /var/nfsshare
 chmod 777 /var/nfsshare
