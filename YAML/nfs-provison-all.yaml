@@ -85,13 +85,13 @@ spec:
             - name: PROVISIONER_NAME
               value: gennext-k8-nfs
             - name: NFS_SERVER
-              value: 192.168.0.134
+              value: 10.10.73.85
             - name: NFS_PATH
               value: /var/nfsshare
       volumes:
         - name: nfs-client-root
           nfs:
-            server: 192.168.0.134
+            server: 10.10.73.85
             path: /var/nfsshare
 ---
 apiVersion: storage.k8s.io/v1
