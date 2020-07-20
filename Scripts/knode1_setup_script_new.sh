@@ -59,6 +59,7 @@ if [ "$?" -ne 0 ]; then
 echo "Failed to system update!!"
     exit 1
 fi
+sleep 30
 echo "Installing docker......"
 apt-get install docker.io -y
 if [ "$?" -ne 0 ]; then
@@ -80,13 +81,13 @@ echo "Failed to started docker!!"
     exit 1
 fi
 echo "Successfuly started docker........"
-echo "updating curl...."
-apt-get install curl -y
+echo "updating curl and nfs-common...."
+apt-get install nfs-common curl -y
 if [ "$?" -ne 0 ]; then
-echo "Failed to installed curl!!"
+echo "Failed to installed nfs-common and curl!!"
     exit 1
 fi
-echo "Successfuly installed curl........."
+echo "Successfuly installed curl and nfs-common........."
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 if [ "$?" -ne 0 ]; then
 echo "Failed to add apt-key!!"
