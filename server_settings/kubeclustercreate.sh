@@ -42,7 +42,7 @@ master_create()
      usage
      exit 1
   fi
-   kubeadm init --kubernetes-version 1.18.5 --control-plane-endpoint $KUBE_VIP --upload-certs --pod-network-cidr=$KUBE_PODCIDR/24
+   kubeadm init --kubernetes-version 1.18.5 --control-plane-endpoint $KUBE_VIP:6443 --apiserver-bind-port 6444 --upload-certs --pod-network-cidr=$KUBE_PODCIDR/24
    track_error $? "Kube master initialisation" 
    setup_configuration
    kubectl create -f https://docs.projectcalico.org/v3.11/manifests/calico.yaml
@@ -58,7 +58,7 @@ replicamaster_create()
      log "Missing KUBE_VIP KUBE_TOKEN KUBE_SHA256 KUBE_CERTKEY"
      exit 1
    fi
-   kubeadm join $KUBE_VIP:6443 --token $KUBE_TOKEN --discovery-token-ca-cert-hash sha256:$KUBE_SHA256 --control-plane --certificate-key $KUBE_CERTKEY --ignore-preflight-errors all
+   kubeadm join $KUBE_VIP:6443 --apiserver-bind-port 6444 --token $KUBE_TOKEN --discovery-token-ca-cert-hash sha256:$KUBE_SHA256 --control-plane --certificate-key $KUBE_CERTKEY --ignore-preflight-errors all
    track_error $? "Kube replica initialisation" 
    setup_configuration
    kubectl get nodes
