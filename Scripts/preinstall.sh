@@ -32,6 +32,10 @@ general_setting()
         cat hostconf >>/etc/hosts
         track_error $? "Network conf"
     fi
+    [ -f /var/cache/apt/archives/lock ] && rm -rf /var/cache/apt/archives/lock
+    [ -f /var/cache/apt/archives/lock-frontend ] && rm -rf /var/cache/apt/archives/lock-frontend
+    [ -f /var/lib/dpkg/lock-frontend ] && rm -rf /var/lib/dpkg/lock-frontend
+    [ -f /var/lib/dpkg/lock ] && rm -rf /var/lib/dpkg/lock
 }
 install_haenv()
 {
