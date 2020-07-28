@@ -1,14 +1,15 @@
 
-10.10.73.72 crvs-master1
-10.10.73.73 crvs-master2
-10.10.73.78 crvs-master3
-10.10.73.86 crvs-node1
-10.10.73.87 crvs-node2
-10.10.73.88 crvs-node3
-10.10.73.89 crvs-node4
-10.10.73.90 crvs-node5
-10.10.73.80 crvs-node6
-10.10.73.81 crvs-node7
-10.10.73.82 crvs-node8
-10.10.73.85 crvs-nfs
-
+10.10.85.197 crvs-master1
+10.10.85.198 crvs-master2
+10.10.85.199 crvs-master3
+10.10.85.200 crvs-nfs
+10.10.85.201 crvs-node1
+10.10.85.202 crvs-node2
+10.10.85.203 crvs-node3
+10.10.85.204 crvs-node4
+10.10.85.205 crvs-node5
+10.10.85.206 crvs-node6
+10.10.85.207 crvs-node7
+10.10.85.208 crvs-node8
+10.10.85.209 crvs-dns1
+10.10.85.210 crvs-dns2
