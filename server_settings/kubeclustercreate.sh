@@ -58,7 +58,7 @@ replicamaster_create()
      log "Missing KUBE_VIP KUBE_TOKEN KUBE_SHA256 KUBE_CERTKEY"
      exit 1
    fi
-   kubeadm join $KUBE_VIP:6443 --token $KUBE_TOKEN --discovery-token-ca-cert-hash sha256:$KUBE_SHA256 --control-plane --certificate-key $KUBE_CERTKEY
+   kubeadm join $KUBE_VIP:6443 --token $KUBE_TOKEN --discovery-token-ca-cert-hash sha256:$KUBE_SHA256 --control-plane --certificate-key $KUBE_CERTKEY --ignore-preflight-errors all
    track_error $? "Kube replica initialisation" 
    setup_configuration
    kubectl get nodes
