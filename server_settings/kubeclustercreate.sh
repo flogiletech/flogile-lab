@@ -73,8 +73,8 @@ apply_configuration()
    cp -f $servername/keepalived.conf /etc/keepalived/keepalived.conf
    cp -f common/check_apiserver.sh /etc/keepalived/check_apiserver.sh
    cp -f common/haproxy.cfg /etc/haproxy/haproxy.cfg
-   cp -f common/keepalived.yaml /etc/kubernetes/manifests/keepalived.yaml
-   cp -f common/haproxy.yaml /etc/kubernetes/manifests/haproxy.yaml
+   cp -f $servername/keepalived.yaml /etc/kubernetes/manifests/keepalived.yaml
+   cp -f $servername/haproxy.yaml /etc/kubernetes/manifests/haproxy.yaml
 }
 create_node()
 {
