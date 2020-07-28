@@ -1,7 +1,7 @@
 export servername=master1
 export KUBE_VIP=10.10.85.196
 export KUBE_PODCIDR=192.168.3.0
-export KUBE_TOKEN=
-export KUBE_SHA256=
-export KUBE_CERTKEY=
+export KUBE_TOKEN='mkxzkt.ciueo6r370slnlek'
+export KUBE_SHA256='4139d51b4e8d3b0e109d5666c4c85c38a55559b568745d5eefdd5c204b7f3dd5'
+export KUBE_CERTKEY='0bbff369c417a6fe68e91553dbc78f5bea8e7565b7b4eaa636c8f889c29540b8'
 
